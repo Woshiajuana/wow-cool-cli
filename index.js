@@ -20,6 +20,7 @@ program.command('init (template)')
     console.log('init',template)
     // init(template);
   });
+
 program.command('list')
   .description("List all the templates")
   .alias('l')
@@ -28,7 +29,10 @@ program.command('list')
     // list();
   });
 
+
+
 program.parse(process.argv);
+console.log(program.args)
 
 if (program.args.length === 0) {
   program.help();
