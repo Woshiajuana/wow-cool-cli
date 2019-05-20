@@ -7,11 +7,8 @@ let package = require('./package.json');
 
 // 定义版本和参数依赖
 program
-  // .usage('wow')
-  .version(package.version, '-v, --version')
-  .option('-i, --init [name]', 'Generate a new project', 'myFirstProject')
-  .option('-l, --list', 'List all the templates');
-
+  .usage('<command>')
+  .version(package.version, '-v, --version');
 
 program.command('init (template)')
   .description("Generate a new project")
@@ -29,10 +26,7 @@ program.command('list')
     // list();
   });
 
-
-
 program.parse(process.argv);
-console.log(program.args)
 
 if (program.args.length === 0) {
   program.help();
