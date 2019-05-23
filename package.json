@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "dependencies": {},
+  "": {
+    "wow-cli": "bin/wow-cli"
+  },
   "devDependencies": {
     "chalk": "^2.4.2",
     "co": "^4.6.0",
