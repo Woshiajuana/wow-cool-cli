@@ -12,7 +12,7 @@ program
   .description("Generate a new project")
   .alias('i')
   .action(function (template) {
-    require('./lib/init')();
+    require('./lib/init')(template);
   });
 program
   .command('list')
