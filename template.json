@@ -1,13 +1,8 @@
 
 {
-  "wow-weex": {
-    "name": "wow-weex",
-    "path": "woshiajuana/ThePalestInkOld",
-    "desc": "A full-featured Webpack + vue-loader setup with hot reload, linting, testing & css extraction."
-  },
-  "1": {
-    "name": "1",
-    "path": "11",
-    "desc": "11"
+  "wow-html": {
+    "name": "wow-html",
+    "path": "woshiajuana/template-html",
+    "desc": "a webpack + multi page project."
   }
 }
