@@ -12,7 +12,8 @@ program
   .description("Generate a new project")
   .alias('i')
   .action(function (template) {
-    require('../lib/init')(template);
+    // console.log('args', process.argv)
+    require('../lib/init')(template, process.argv[4]);
   });
 program
   .command('list')
