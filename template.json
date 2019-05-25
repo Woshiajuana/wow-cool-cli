@@ -1,17 +1,13 @@
-[
-  {
+
+{
+  "wow-weex": {
     "name": "wow-weex",
     "path": "vuejs-templates/webpack",
     "desc": "A full-featured Webpack + vue-loader setup with hot reload, linting, testing & css extraction."
   },
-  {
+  "1": {
     "name": "1",
     "path": "11",
-    "desc": "111"
-  },
-  {
-    "name": "2",
-    "path": "22",
-    "desc": "222"
+    "desc": "11"
   }
-]
+}
