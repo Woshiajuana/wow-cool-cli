@@ -2,7 +2,7 @@
 {
   "wow-weex": {
     "name": "wow-weex",
-    "path": "vuejs-templates/webpack",
+    "path": "woshiajuana/ThePalestInkOld",
     "desc": "A full-featured Webpack + vue-loader setup with hot reload, linting, testing & css extraction."
   },
   "1": {
