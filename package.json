@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {},
-  "": {
+  "bin": {
     "wow-cli": "bin/wow-cli"
   },
   "devDependencies": {
