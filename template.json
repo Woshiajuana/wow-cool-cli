@@ -1,8 +1,12 @@
-
 {
   "wow-html": {
     "name": "wow-html",
     "path": "woshiajuana/template-html",
     "desc": "a webpack + multi page project."
+  },
+  "wow-wechart": {
+    "name": "wow-wechart",
+    "path": "woshiajuana/template-wechat",
+    "desc": "a webpack + wechat small routine project."
   }
 }
