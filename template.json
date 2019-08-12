@@ -8,5 +8,10 @@
     "name": "wow-wechart",
     "path": "woshiajuana/template-wechat",
     "desc": "a webpack + wechat small routine project."
+  },
+  "wow-weex": {
+    "name": "wow-weex",
+    "path": "woshiajuana/template-weex",
+    "desc": "a webpack + weex vue project."
   }
 }
