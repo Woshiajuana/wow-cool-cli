@@ -13,5 +13,10 @@
     "name": "wow-weex",
     "path": "woshiajuana/template-weex",
     "desc": "a webpack + weex vue project."
+  },
+  "wow-admin-web": {
+    "name": "wow-admin-web",
+    "path": "woshiajuana/template-admin-web",
+    "desc": "a webpack + vue project."
   }
 }
