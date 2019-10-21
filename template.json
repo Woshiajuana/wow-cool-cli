@@ -18,5 +18,10 @@
     "name": "wow-admin-web",
     "path": "woshiajuana/template-admin-web",
     "desc": "a webpack + vue project."
+  },
+  "wow-admin-service": {
+    "name": "wow-admin-service",
+    "path": "woshiajuana/template-admin-service",
+    "desc": "node egg koa2."
   }
 }
