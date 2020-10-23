@@ -7,7 +7,6 @@
   },
   "bin": {
     "wow": "bin/wow",
-    "wow-cli": "bin/wow",
     "wow-init": "bin/wow-init",
     "wow-list": "bin/wow-list"
   },
