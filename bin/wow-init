@@ -1,5 +1,34 @@
 #!/usr/bin/env node
 
 const program = require('commander');
+const chalk = require('chalk');
 
+program
+    .usage('<template-name> [project-name]')
+    .option('-c, --clone', 'use git clone')
+    .option('--offline', 'use cached template')
+;
+console.log(0)
+
+/**
+ * Help
+ * */
+program.on('--help', () => {
+    console.log('  Examples:');
+    console.log();
+    console.log(chalk.gray('    # create a new project with an official template'));
+    console.log('    $ wow init template my-project');
+    console.log();
+    console.log(chalk.gray('    # create a new project straight from a github template'));
+    console.log('    $ wow init username/repo my-project');
+    console.log();
+});
+
+(function help () {
+    program.parse(process.argv);
+    if (program.args.length < 1) {
+         return program.help();
+    }
+})();
 console.log(1)
+console.log("program.args[0] => ", program.args[0]);
