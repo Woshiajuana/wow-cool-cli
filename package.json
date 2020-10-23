@@ -1,7 +1,7 @@
 {
   "name": "wow-cool-cli",
-  "version": "0.0.6",
-  "description": "",
+  "version": "0.0.7",
+  "description": "A simple scaffold for pulling project template",
   "main": "index.js",
   "dependencies": {
     "chalk": "^2.4.2",
