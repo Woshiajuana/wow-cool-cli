@@ -1,6 +1,31 @@
 #!/usr/bin/env node
 
-const program = require('commander');
+const request = require('request');
+const logger = require('../lib/logger');
 
+console.log();
+process.on('exit', () => {
+    console.log()
+});
 
-
+/**
+ * 直接请求 github 提供的 api
+ * 这里是我的账号 [woshiajuana]，查询下面的模板
+ * 因为这里有很多其他非模板项目，所以需要模板规则过滤下
+ * */
+request({
+    url: 'https://api.github.com/users/woshiajuana/repos',
+    headers: {
+        'User-Agent': 'wow-cool-cli'
+    },
+}, (err, res, body) => {
+    if (err) {
+        logger.fatal(err);
+    }
+    const responseBody = JSON.parse(body);
+    if (Array.isArray(responseBody)) {
+        chalk.green('  Available templates:');
+        console.log();
+        
+    }
+});

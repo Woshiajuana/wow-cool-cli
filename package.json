@@ -3,7 +3,9 @@
   "version": "0.0.7",
   "description": "A simple scaffold for pulling project template",
   "dependencies": {
-    "commander": "^2.20.3"
+    "chalk": "^4.1.0",
+    "commander": "^2.20.3",
+    "request": "^2.88.2"
   },
   "bin": {
     "wow": "bin/wow",
