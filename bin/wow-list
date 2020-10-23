@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const request = require('request');
+const chalk = require('chalk');
 const logger = require('../lib/logger');
 
 console.log();
@@ -14,7 +15,7 @@ process.on('exit', () => {
  * 因为这里有很多其他非模板项目，所以需要模板规则过滤下
  * */
 request({
-    url: 'https://api.github.com/users/woshiajuana/repos',
+    url: 'https://api.github.com/users/woshiajuana/repos?page=1&per_page=999',
     headers: {
         'User-Agent': 'wow-cool-cli'
     },
@@ -25,7 +26,12 @@ request({
     const responseBody = JSON.parse(body);
     if (Array.isArray(responseBody)) {
         chalk.green('  Available templates:');
-        console.log();
-        
+        const filterData = responseBody.filter(({ name }) => name.toLocaleLowerCase().startsWith('template'));
+        filterData.forEach((repo) => {
+            console.log(
+                '  ' + chalk.yellow('★') +
+                '  ' + chalk.blue(repo.name) +
+                ' - ' + repo.description)
+        });
     }
 });
