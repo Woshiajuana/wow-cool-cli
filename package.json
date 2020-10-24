@@ -6,7 +6,8 @@
     "chalk": "^4.1.0",
     "commander": "^2.20.3",
     "ora": "^5.1.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "user-home": "^2.0.0"
   },
   "bin": {
     "wow": "bin/wow",

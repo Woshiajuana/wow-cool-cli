@@ -8,7 +8,6 @@ program
     .option('-c, --clone', 'use git clone')
     .option('--offline', 'use cached template')
 ;
-console.log(0)
 
 /**
  * Help
@@ -30,5 +29,5 @@ program.on('--help', () => {
          return program.help();
     }
 })();
-console.log(1)
+
 console.log("program.args[0] => ", program.args[0]);
