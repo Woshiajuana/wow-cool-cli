@@ -25,7 +25,7 @@ request({
     }
     const responseBody = JSON.parse(body);
     if (Array.isArray(responseBody)) {
-        chalk.green('  Available templates:');
+        chalk.green('  可用模板:');
         const filterData = responseBody.filter(({ name }) => name.toLocaleLowerCase().startsWith('template'));
         filterData.forEach((repo) => {
             console.log(
