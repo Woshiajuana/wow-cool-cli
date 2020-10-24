@@ -2,6 +2,8 @@
 
 const program = require('commander');
 const chalk = require('chalk');
+const home = require('user-home');
+const exists = require('fs').existsSync;
 
 program
     .usage('<template-name> [project-name]')
@@ -11,6 +13,7 @@ program
 
 /**
  * Help
+ * 显示帮助的
  * */
 program.on('--help', () => {
     console.log('  Examples:');
@@ -30,4 +33,54 @@ program.on('--help', () => {
     }
 })();
 
-console.log("program.args[0] => ", program.args[0]);
+console.log("program.args => ", program.args);
+
+/**
+ * Settings.
+ * 读取设置
+ * */
+// 模板名
+let template = program.args[0];
+// 判断模板
+const hasSlash = template.indexOf('/') > -1;
+// 项目名
+const rawName = program.args[1];
+const inPlace = !rawName || rawName === '.';
+// 下载项目路径
+const name = inPlace ? path.relative('../', process.cwd()) : rawName;
+const to = path.resolve(rawName || '.');
+const clone = program.clone || false;
+
+const tmp = path.join(home, '.vue-templates', template.replace(/[\/:]/g, '-'))
+if (program.offline) {
+    console.log(`> Use cached template at ${chalk.yellow(tildify(tmp))}`)
+    template = tmp
+}
+
+
+
+/**
+ * Padding.
+ */
+
+console.log();
+process.on('exit', () => {
+    console.log()
+});
+
+
+if (inPlace || exists(to)) {
+    inquirer.prompt([{
+        type: 'confirm',
+        message: inPlace
+            ? 'Generate project in current directory?'
+            : 'Target directory exists. Continue?',
+        name: 'ok'
+    }]).then(answers => {
+        if (answers.ok) {
+            run()
+        }
+    }).catch(logger.fatal)
+} else {
+    run()
+}
