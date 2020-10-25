@@ -9,6 +9,8 @@ const inquirer = require('inquirer');
 const tildify = require('tildify');
 const Metalsmith = require('metalsmith');
 const download = require('download-git-repo');
+const ora = require('ora');
+const rm = require('rimraf').sync;
 
 const logger = require('../lib/logger');
 const localPath = require('../lib/local-path');
@@ -104,11 +106,7 @@ function run() {
         // 使用本地缓存模板
         const templatePath = getTemplatePath(template);
         if (exists(templatePath)) {
-            generate(name, templatePath, to, err => {
-                if (err) logger.fatal(err);
-                console.log();
-                logger.success('生成 "%s".', name);
-            })
+            generate(name, templatePath, to);
         } else {
             logger.fatal('本地模板 "%s" 没有找到', template)
         }
@@ -130,27 +128,34 @@ function run() {
  *
  * @param {String} template
  */
-
 function downloadAndGenerate (template) {
-    const spinner = ora('downloading template')
-    spinner.start()
-    // Remove if local template exists
-    if (exists(tmp)) rm(tmp)
+    const spinner = ora('正在下载模板');
+    spinner.start();
+    if (exists(tmp)) rm(tmp);
     download(template, tmp, { clone }, err => {
-        spinner.stop()
-        if (err) logger.fatal('Failed to download repo ' + template + ': ' + err.message.trim())
-        generate(name, tmp, to, err => {
-            if (err) logger.fatal(err)
-            console.log()
-            logger.success('Generated "%s".', name)
-        })
-    })
+        spinner.stop();
+        if (err) logger.fatal('下载失败 ' + template + ': ' + err.message.trim())
+        generate(name, tmp, to)
+    });
 }
 
 
 /**
  * 生产模板
  * */
-function generate () {
-
+function generate (name, src, dest) {
+    const metalsmith = Metalsmith(src);
+    Object.assign(metalsmith.metadata(), {
+        destDirName: name,
+        inPlace: dest === process.cwd(),
+        noEscape: true
+    });
+    metalsmith.clean(false)
+        .source('.')
+        .destination(dest)
+        .build((err, files) => {
+            if (err) logger.fatal(err);
+            console.log();
+            logger.success('生成 "%s".', name)
+        });
 }
