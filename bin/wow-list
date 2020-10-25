@@ -3,7 +3,12 @@
 const request = require('request');
 const chalk = require('chalk');
 const logger = require('../lib/logger');
+const ora = require('ora');
 
+
+/**
+ * Padding.
+ */
 console.log();
 process.on('exit', () => {
     console.log()
@@ -14,12 +19,15 @@ process.on('exit', () => {
  * 这里是我的账号 [woshiajuana]，查询下面的模板
  * 因为这里有很多其他非模板项目，所以需要模板规则过滤下
  * */
+const spinner = ora('正在查询模板列表...');
+spinner.start();
 request({
     url: 'https://api.github.com/users/woshiajuana/repos?page=1&per_page=999',
     headers: {
         'User-Agent': 'wow-cool-cli'
     },
 }, (err, res, body) => {
+    spinner.stop();
     if (err) {
         logger.fatal(err);
     }
@@ -31,7 +39,7 @@ request({
             console.log(
                 '  ' + chalk.yellow('★') +
                 '  ' + chalk.blue(repo.name) +
-                ' - ' + repo.description)
+                ' - ' + repo.description || '')
         });
     }
 });

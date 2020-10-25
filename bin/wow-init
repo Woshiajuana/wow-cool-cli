@@ -60,10 +60,11 @@ if (program.offline) {
     console.log(`> Use cached template at ${chalk.yellow(tildify(tmp))}`)
     template = tmp
 }
+
+
 /**
  * Padding.
  */
-
 console.log();
 process.on('exit', () => {
     console.log()
