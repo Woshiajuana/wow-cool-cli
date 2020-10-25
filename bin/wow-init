@@ -65,9 +65,9 @@ const to = path.resolve(rawName || '.');
 const clone = program.clone || false;
 
 // 缓存模板存储路径
-const tmp = path.join(home, '.wow-templates', template.replace(/[\/:]/g, '-'))
+const tmp = path.join(home, '.wow-templates', template.replace(/[\/:]/g, '-'));
 if (program.offline) {
-    console.log(`> Use cached template at ${chalk.yellow(tildify(tmp))}`)
+    console.log(`> Use cached template at ${chalk.yellow(tildify(tmp))}`);
     template = tmp
 }
 
@@ -125,11 +125,11 @@ function run() {
 
 /**
  * Download a generate from a template repo.
- *
+ * 下载、生成模板
  * @param {String} template
  */
 function downloadAndGenerate (template) {
-    const spinner = ora('正在下载模板');
+    const spinner = ora('正在下载模板...');
     spinner.start();
     if (exists(tmp)) rm(tmp);
     download(template, tmp, { clone }, err => {
@@ -141,7 +141,7 @@ function downloadAndGenerate (template) {
 
 
 /**
- * 生产模板
+ * 生成模板
  * */
 function generate (name, src, dest) {
     const metalsmith = Metalsmith(src);
