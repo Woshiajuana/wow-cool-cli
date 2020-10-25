@@ -7,11 +7,12 @@ const exists = require('fs').existsSync;
 const path = require('path');
 const logger = require('../lib/logger');
 const inquirer = require('inquirer');
+const tildify = require('tildify');
 
 program
     .usage('<template-name> [project-name]')
     .option('-c, --clone', '使用git克隆')
-    .option('--offline', '使用缓存模板')
+    .option('-o, --offline', '使用缓存模板')
 ;
 
 /**
@@ -53,9 +54,12 @@ const name = inPlace ? path.relative('../', process.cwd()) : rawName;
 const to = path.resolve(rawName || '.');
 const clone = program.clone || false;
 
-const tmp = path.join(home, '.vue-templates', template.replace(/[\/:]/g, '-'))
-
-console.log('tmp => ', tmp);
+// 缓存模板存储路径
+const tmp = path.join(home, '.wow-templates', template.replace(/[\/:]/g, '-'))
+if (program.offline) {
+    console.log(`> Use cached template at ${chalk.yellow(tildify(tmp))}`)
+    template = tmp
+}
 /**
  * Padding.
  */
