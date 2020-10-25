@@ -49,8 +49,9 @@ const hasSlash = template.indexOf('/') > -1;
 // 项目名
 const rawName = program.args[1];
 const inPlace = !rawName || rawName === '.';
-// 下载项目路径
+// 下载项目
 const name = inPlace ? path.relative('../', process.cwd()) : rawName;
+// 下载项目路径
 const to = path.resolve(rawName || '.');
 const clone = program.clone || false;
 
@@ -78,7 +79,6 @@ if (inPlace || exists(to)) {
             : '目标目录存在。继续吗？',
         name: 'ok'
     }]).then(answers => {
-        console.log('answers => ', answers)
         if (answers.ok) {
             run()
         }
@@ -90,9 +90,17 @@ if (inPlace || exists(to)) {
 
 /**
  * Check, download and generate the project.
- * 得到参数配置之后，进行操作
+ * 得到参数配置之后，进行操作，简化了下逻辑
  */
 function run() {
 
+
+}
+
+
+/**
+ * 生产模板
+ * */
+function generate () {
 
 }
