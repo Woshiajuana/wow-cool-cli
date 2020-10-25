@@ -134,8 +134,8 @@ function downloadAndGenerate (template) {
     if (exists(tmp)) rm(tmp);
     download(template, tmp, { clone }, err => {
         spinner.stop();
-        if (err) logger.fatal('下载失败 ' + template + ': ' + err.message.trim())
-        generate(name, tmp, to)
+        if (err) logger.fatal('下载失败 ' + template + ': ' + err.message.trim());
+        generate(name, tmp, to);
     });
 }
 
@@ -156,6 +156,6 @@ function generate (name, src, dest) {
         .build((err, files) => {
             if (err) logger.fatal(err);
             console.log();
-            logger.success('生成 "%s".', name)
+            logger.success('生成 "%s".', name);
         });
 }
