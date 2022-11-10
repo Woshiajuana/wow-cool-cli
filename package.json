@@ -20,7 +20,7 @@
     "wow-list": "bin/wow-list"
   },
   "devDependencies": {
-    "mocha": "^8.2.0"
+    "mocha": "^10.1.0"
   },
   "scripts": {
     "test": "mocha test/e2e/test.js --slow 1000"
